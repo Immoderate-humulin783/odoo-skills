@@ -1,3 +1,6 @@
+<img width="1264" height="842" alt="Image_l0dbm0l0dbm0l0db" src="https://github.com/user-attachments/assets/d6cf68f7-353a-4021-b640-59128c20a594" />
+
+
 <div align="center">
 
 # Odoo Skills
