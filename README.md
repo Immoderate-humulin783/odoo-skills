@@ -1,35 +1,231 @@
+<div align="center">
+
 # Odoo Skills
 
-Agent skills for practical Odoo addon work and OCA module migrations.
+**Odoo-specific agent skills for safer addon work, sharper reviews, OWL frontend changes, and OCA migrations.**
+
+[![Skills](https://img.shields.io/badge/skills-5-4f46e5?style=flat-square)](#skills)
+[![Odoo](https://img.shields.io/badge/Odoo-addon%20engineering-714B67?style=flat-square)](https://www.odoo.com/)
+[![OCA](https://img.shields.io/badge/OCA-migration%208.0--19.0-0A66C2?style=flat-square)](https://odoo-community.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org)
+[![GitHub last commit](https://img.shields.io/github/last-commit/mart337i/odoo-skills?style=flat-square)](https://github.com/mart337i/odoo-skills/commits/main)
+[![GitHub stars](https://img.shields.io/github/stars/mart337i/odoo-skills?style=flat-square&color=yellow)](https://github.com/mart337i/odoo-skills/stargazers)
+
+</div>
+
+---
+
+## Table Of Contents
+
+- [What Is This?](#what-is-this)
+- [Why Use It?](#why-use-it)
+- [Quick Start](#quick-start)
+- [Real-World Example](#real-world-example)
+- [Skills](#skills)
+- [Project Structure](#project-structure)
+- [Recommended Environment](#recommended-environment)
+- [How It Works](#how-it-works)
+- [Designed For](#designed-for)
+- [Deliberately Out Of Scope](#deliberately-out-of-scope)
+- [Stats](#stats)
+
+---
+
+## What Is This?
+
+**Odoo Skills** is a compact skill pack for AI coding agents working in Odoo codebases.
+
+Odoo work is full of sharp edges: version-specific ORM APIs, XML loading order, record rules, `sudo()` boundaries, multi-company behavior, asset bundles, OWL version differences, and OCA migration conventions. Generic agents regularly miss those details.
+
+This repo gives your agent a practical Odoo operating manual: what to inspect, what to ask, what not to run without confirmation, and which Odoo-specific risks to check before claiming a task is done.
+
+---
+
+## Why Use It?
+
+| Generic Agent | With Odoo Skills |
+|---|---|
+| Guesses the Odoo version from memory | Detects version from branch, manifests, docs, config, or local source |
+| Treats Odoo like normal Python + XML | Checks ORM, manifests, security CSVs, record rules, views, assets, and tests |
+| Suggests commands that may touch the wrong database | Reads local setup docs/base command and asks before database-touching commands |
+| Misses multi-company and portal/public exposure | Reviews groups, ACLs, record rules, `sudo()`, domains, and company isolation together |
+| Mixes migration cleanup with feature changes | Keeps OCA migration compatibility work separate from behavior changes |
+| Uses generic frontend advice | Routes OWL work through component, template, reactivity, props, assets, and migration guidance |
+
+---
 
 ## Quick Start
 
-Link the skills into your local Claude skills directory:
+Install directly with `npx` from GitHub:
+
+```bash
+npx github:mart337i/odoo-skills
+```
+
+Install only one target:
+
+```bash
+npx github:mart337i/odoo-skills --target opencode
+npx github:mart337i/odoo-skills --target claude
+```
+
+After publishing to npm, the package can also be run as:
+
+```bash
+npx @mart337i/odoo-skills
+```
+
+The installer copies all skills into both `~/.claude/skills` and `~/.config/opencode/skills` by default. Existing skills with the same names are moved into a timestamped `.backup-odoo-skills-*` folder before replacement.
+
+For local development, clone the repo:
+
+```bash
+git clone https://github.com/mart337i/odoo-skills.git
+cd odoo-skills
+```
+
+Then symlink into Claude-style skills:
 
 ```bash
 ./scripts/link-skills.sh
 ```
 
-If your Odoo source checkout is outside the project being edited, export its path so agents can inspect framework code when needed. You can also expose the local development command and tool README that describe how this machine runs Odoo:
+Restart or reload your agent so it picks up the new skill list.
+
+---
+
+## Real-World Example
+
+**Prompt:**
+
+> Add a portal endpoint that lets customers download a PDF report for their own records.
+
+| Without Odoo Skills | With Odoo Skills |
+|---|---|
+| Adds a controller and calls `sudo()` to fetch the record | Asks which model/report, confirms portal ownership rule, checks `auth`, CSRF, access rights, record rules, and whether `sudo()` is safe |
+| Puts the route in any controller file | Inspects existing controller structure and route naming conventions |
+| Returns a PDF if the ID exists | Verifies the current user can access that record and cannot enumerate others |
+| Skips verification | Proposes a portal/controller test or realistic user access check before running commands |
+
+The point is not more ceremony. The point is fewer security bugs, fewer broken module updates, and less cleanup after the agent "helped."
+
+---
+
+## Skills
+
+| Skill | Use It For |
+|---|---|
+| **[grill-me](./skills/grill-me/SKILL.md)** | Stress-test Odoo plans before implementation: addon boundaries, models, security, UI flows, data, OWL, migrations, and verification. |
+| **[owl](./skills/owl/SKILL.md)** | Build, review, debug, and migrate OWL frontend code: components, templates, reactivity, hooks, props, plugins, registries, and Odoo assets. |
+| **[odoo](./skills/odoo/SKILL.md)** | General Odoo addon development: exploration, debugging, architecture review, manifest/docs sync, models, views, controllers, reports, tests, and security. |
+| **[odoo-guidelines](./skills/odoo-guidelines/SKILL.md)** | Check code against official Odoo coding guidelines for module structure, XML, Python, translations, JavaScript, and SCSS. |
+| **[odoo-migration](./skills/odoo-migration/SKILL.md)** | End-to-end OCA module migration workflow for `[MIG]` pull requests, with version tips from `8.0` through `19.0`. |
+
+---
+
+## Project Structure
+
+```text
+odoo-skills/
+├── AGENTS.md
+├── CLAUDE.md
+├── README.md
+├── bin/
+│   └── odoo-skills.js
+├── package.json
+├── scripts/
+│   └── link-skills.sh
+└── skills/
+    ├── grill-me/
+    ├── odoo/
+    ├── odoo-guidelines/
+    ├── odoo-migration/
+    └── owl/
+```
+
+There are no bucket folders. Skills live directly under `skills/` so they are easy to link into different agent environments.
+
+---
+
+## Recommended Environment
+
+If your Odoo source checkout is outside the project being edited, expose it so agents can inspect framework code instead of relying on memory:
 
 ```bash
 export ODOO_SOURCE=/path/to/odoo
+```
+
+You can also expose your local Odoo command and setup docs:
+
+```bash
 export ODOO_BASE_COMMAND="/path/to/odoo/odoo-bin -c /path/to/odoo.conf --addons-path=/path/to/addons"
 export ODOO_TOOL_README=/path/to/local-development/README.md
 ```
 
-Put those exports in your shell profile if you want them available in every agent session.
-
 `ODOO_BASE_COMMAND` is the base command agents should inspect before proposing install/update/test commands. `ODOO_TOOL_README` points to local setup documentation agents should read before using project-specific tooling.
 
-## Skills
+Put those exports in your shell profile if you want them available in every agent session.
 
-- **[grill-me](./skills/grill-me/SKILL.md)** - Odoo-specific grilling session for stress-testing addon plans, security, data models, UI flows, OWL changes, migrations, and verification strategy.
-- **[owl](./skills/owl/SKILL.md)** - OWL frontend engineering for Odoo and standalone Owl apps, including components, templates, reactivity, hooks, plugins, debugging, and migration.
-- **[odoo](./skills/odoo/SKILL.md)** - Odoo addon development, codebase exploration, debugging, architecture review, and manifest/docs sync.
-- **[odoo-guidelines](./skills/odoo-guidelines/SKILL.md)** - Official Odoo coding guideline review for module structure, XML, Python, translations, JavaScript, and SCSS.
-- **[odoo-migration](./skills/odoo-migration/SKILL.md)** - End-to-end OCA module migration workflow for porting addons between Odoo major versions.
+---
 
-## Scope
+## How It Works
 
-These skills focus on Odoo addon engineering. The migration skill covers OCA module migration and `[MIG]` pull request preparation. OpenUpgrade workflows are intentionally out of scope.
+```mermaid
+flowchart LR
+    A[Developer prompt] --> B[AI agent]
+    B --> C[Odoo Skills]
+    C --> D[Repo inspection]
+    C --> E[Odoo conventions]
+    C --> F[Security and migration guardrails]
+    D --> G[Safer Odoo change]
+    E --> G
+    F --> G
+```
+
+The skills push agents toward a simple discipline:
+
+1. Detect the Odoo version and repo shape.
+2. Read manifests, models, views, security, assets, tests, and docs before editing.
+3. Use local Odoo source and setup docs when available.
+4. Ask before running commands that touch databases or services.
+5. Verify at the Odoo behavior seam, not just with generic static checks.
+
+---
+
+## Designed For
+
+- Odoo addon development.
+- OCA repositories.
+- OCA module migrations between major Odoo versions.
+- OWL/web client frontend work.
+- Odoo code reviews and architecture checks.
+- Agents working in unfamiliar Odoo codebases.
+
+---
+
+## Deliberately Out Of Scope
+
+OpenUpgrade workflows are not covered. The migration skill is for normal OCA module migration and `[MIG]` pull request preparation.
+
+---
+
+## Stats
+
+| Metric | Value |
+|---|---|
+| Skills | 5 |
+| Installer | `npx github:mart337i/odoo-skills` |
+| OCA migration coverage | `8.0` through `19.0` |
+| Main focus | Odoo addon engineering |
+| Frontend coverage | OWL, Odoo assets, templates, reactivity, migration |
+| Safety focus | security, multi-company, manifests, database-touching commands |
+
+---
+
+<div align="center">
+
+If this saves you from one bad `sudo()`, one broken XML load order, or one wrong-version migration, it did its job.
+
+Star the repo if you find it useful.
+
+</div>
