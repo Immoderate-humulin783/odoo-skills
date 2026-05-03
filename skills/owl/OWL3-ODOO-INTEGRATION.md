@@ -52,7 +52,7 @@ When integrating with Odoo web client:
 
 ## Styling And Guidelines
 
-Compose with `odoo-guidelines` for file naming, static organization, JavaScript, and SCSS conventions.
+Compose with `odoo-code-review` for file naming, static organization, JavaScript, and SCSS conventions.
 
 Use Odoo SCSS class conventions:
 

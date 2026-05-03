@@ -1,7 +1,7 @@
 {
   "name": "@mart337i/odoo-skills",
   "version": "0.1.0",
-  "description": "Agent skills for Odoo addon development, OWL frontend work, guideline checks, and OCA module migrations.",
+  "description": "Agent skills for Odoo addon development, code review, execution tracing, test writing, version references, OWL frontend work, and OCA migrations.",
   "type": "commonjs",
   "bin": {
     "odoo-skills": "./bin/odoo-skills.js"
@@ -19,7 +19,10 @@
     "skills",
     "odoo",
     "oca",
-    "owl"
+    "owl",
+    "code-review",
+    "migration",
+    "testing"
   ],
   "homepage": "https://github.com/mart337i/odoo-skills#readme",
   "repository": {

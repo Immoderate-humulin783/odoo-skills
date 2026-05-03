@@ -5,9 +5,9 @@
 
 # Odoo Skills
 
-**Odoo-specific agent skills for safer addon work, sharper reviews, OWL frontend changes, and OCA migrations.**
+**Odoo-specific agent skills for safer addon work, sharper reviews, execution tracing, test writing, OWL frontend changes, version references, and OCA migrations.**
 
-[![Skills](https://img.shields.io/badge/skills-5-4f46e5?style=flat-square)](#skills)
+[![Skills](https://img.shields.io/badge/skills-10-4f46e5?style=flat-square)](#skills)
 [![Odoo](https://img.shields.io/badge/Odoo-addon%20engineering-714B67?style=flat-square)](https://www.odoo.com/)
 [![OCA](https://img.shields.io/badge/OCA-migration%208.0--19.0-0A66C2?style=flat-square)](https://odoo-community.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org)
@@ -36,7 +36,7 @@
 
 ## What Is This?
 
-**Odoo Skills** is a compact skill pack for AI coding agents working in Odoo codebases.
+**Odoo Skills** is an Odoo-focused skill pack for AI coding agents working in Odoo codebases.
 
 Odoo work is full of sharp edges: version-specific ORM APIs, XML loading order, record rules, `sudo()` boundaries, multi-company behavior, asset bundles, OWL version differences, and OCA migration conventions. Generic agents regularly miss those details.
 
@@ -49,10 +49,11 @@ This repo gives your agent a practical Odoo operating manual: what to inspect, w
 | Generic Agent | With Odoo Skills |
 |---|---|
 | Guesses the Odoo version from memory | Detects version from branch, manifests, docs, config, or local source |
-| Treats Odoo like normal Python + XML | Checks ORM, manifests, security CSVs, record rules, views, assets, and tests |
+| Treats Odoo like normal Python + XML | Checks ORM, manifests, security CSVs, record rules, views, assets, tests, and version-specific APIs |
 | Suggests commands that may touch the wrong database | Reads local setup docs/base command and asks before database-touching commands |
 | Misses multi-company and portal/public exposure | Reviews groups, ACLs, record rules, `sudo()`, domains, and company isolation together |
 | Mixes migration cleanup with feature changes | Keeps OCA migration compatibility work separate from behavior changes |
+| Adds code without proving behavior | Writes Odoo tests at the ORM, form, access, controller, report, or mocked integration seam |
 | Uses generic frontend advice | Routes OWL work through component, template, reactivity, props, assets, and migration guidance |
 
 ---
@@ -108,7 +109,7 @@ Restart or reload your agent so it picks up the new skill list.
 | Adds a controller and calls `sudo()` to fetch the record | Asks which model/report, confirms portal ownership rule, checks `auth`, CSRF, access rights, record rules, and whether `sudo()` is safe |
 | Puts the route in any controller file | Inspects existing controller structure and route naming conventions |
 | Returns a PDF if the ID exists | Verifies the current user can access that record and cannot enumerate others |
-| Skips verification | Proposes a portal/controller test or realistic user access check before running commands |
+| Skips verification | Traces route -> model -> report flow and proposes a portal/controller test or realistic user access check before running commands |
 
 The point is not more ceremony. The point is fewer security bugs, fewer broken module updates, and less cleanup after the agent "helped."
 
@@ -121,8 +122,13 @@ The point is not more ceremony. The point is fewer security bugs, fewer broken m
 | **[grill-me](./skills/grill-me/SKILL.md)** | Stress-test Odoo plans before implementation: addon boundaries, models, security, UI flows, data, OWL, migrations, and verification. |
 | **[owl](./skills/owl/SKILL.md)** | Build, review, debug, and migrate OWL frontend code: components, templates, reactivity, hooks, props, plugins, registries, and Odoo assets. |
 | **[odoo](./skills/odoo/SKILL.md)** | General Odoo addon development: exploration, debugging, architecture review, manifest/docs sync, models, views, controllers, reports, tests, and security. |
-| **[odoo-guidelines](./skills/odoo-guidelines/SKILL.md)** | Check code against official Odoo coding guidelines for module structure, XML, Python, translations, JavaScript, and SCSS. |
+| **[odoo-17.0](./skills/odoo-17.0/SKILL.md)** | Odoo 17 reference guides for actions, controllers, data, decorators, fields, manifests, migrations, mixins, models, OWL, performance, reports, security, testing, transactions, translations, and views. |
+| **[odoo-18.0](./skills/odoo-18.0/SKILL.md)** | Odoo 18 reference guides for actions, controllers, data, decorators, fields, manifests, migrations, mixins, models, OWL, performance, reports, security, testing, transactions, translations, and views. |
+| **[odoo-19.0](./skills/odoo-19.0/SKILL.md)** | Odoo 19 reference guides for actions, controllers, data, decorators, fields, manifests, migrations, mixins, models, OWL, performance, reports, security, testing, transactions, translations, and views. |
+| **[odoo-code-review](./skills/odoo-code-review/SKILL.md)** | Review Odoo code for correctness, security, performance, migrations, tests, manifests, and official coding guidelines. |
+| **[odoo-code-tracer](./skills/odoo-code-tracer/SKILL.md)** | Trace execution through controllers, buttons, cron jobs, model methods, overrides, computes, onchanges, constraints, database operations, side effects, and security checks. |
 | **[odoo-migration](./skills/odoo-migration/SKILL.md)** | End-to-end OCA module migration workflow for `[MIG]` pull requests, with version tips from `8.0` through `19.0`. |
+| **[odoo-test-writer](./skills/odoo-test-writer/SKILL.md)** | Create Odoo tests with TransactionCase, SingleTransactionCase, HttpCase, AccountTestInvoicingCommon, Form helper, tags, mocks, access tests, workflow tests, and test commands. |
 
 ---
 
@@ -141,8 +147,13 @@ odoo-skills/
 └── skills/
     ├── grill-me/
     ├── odoo/
-    ├── odoo-guidelines/
+    ├── odoo-17.0/
+    ├── odoo-18.0/
+    ├── odoo-19.0/
+    ├── odoo-code-review/
+    ├── odoo-code-tracer/
     ├── odoo-migration/
+    ├── odoo-test-writer/
     └── owl/
 ```
 
@@ -188,10 +199,13 @@ flowchart LR
 The skills push agents toward a simple discipline:
 
 1. Detect the Odoo version and repo shape.
-2. Read manifests, models, views, security, assets, tests, and docs before editing.
-3. Use local Odoo source and setup docs when available.
-4. Ask before running commands that touch databases or services.
-5. Verify at the Odoo behavior seam, not just with generic static checks.
+2. Use version-specific references for Odoo 17, 18, and 19 when detailed API guidance is needed.
+3. Read manifests, models, views, security, assets, tests, and docs before editing.
+4. Trace execution paths when behavior depends on controllers, buttons, cron jobs, overrides, or side effects.
+5. Write tests at the Odoo behavior seam: ORM, form, access, workflow, controller, report, or mocked integration.
+6. Use local Odoo source and setup docs when available.
+7. Ask before running commands that touch databases or services.
+8. Verify at the Odoo behavior seam, not just with generic static checks.
 
 ---
 
@@ -202,6 +216,9 @@ The skills push agents toward a simple discipline:
 - OCA module migrations between major Odoo versions.
 - OWL/web client frontend work.
 - Odoo code reviews and architecture checks.
+- Odoo test writing for custom modules.
+- Odoo execution tracing and impact analysis.
+- Odoo 17, 18, and 19 version-specific reference lookup.
 - Agents working in unfamiliar Odoo codebases.
 
 ---
@@ -216,12 +233,14 @@ OpenUpgrade workflows are not covered. The migration skill is for normal OCA mod
 
 | Metric | Value |
 |---|---|
-| Skills | 5 |
+| Skills | 10 |
 | Installer | `npx github:mart337i/odoo-skills` |
 | OCA migration coverage | `8.0` through `19.0` |
+| Version reference coverage | Odoo 17.0, 18.0, 19.0 |
 | Main focus | Odoo addon engineering |
 | Frontend coverage | OWL, Odoo assets, templates, reactivity, migration |
-| Safety focus | security, multi-company, manifests, database-touching commands |
+| Testing coverage | TransactionCase, SingleTransactionCase, HttpCase, Form helper, mocks, tags, access tests |
+| Safety focus | code review, execution tracing, security, multi-company, manifests, database-touching commands |
 
 ---
 

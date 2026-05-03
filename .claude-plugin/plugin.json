@@ -4,7 +4,12 @@
     "./skills/grill-me",
     "./skills/owl",
     "./skills/odoo",
-    "./skills/odoo-guidelines",
-    "./skills/odoo-migration"
+    "./skills/odoo-17.0",
+    "./skills/odoo-18.0",
+    "./skills/odoo-19.0",
+    "./skills/odoo-code-review",
+    "./skills/odoo-code-tracer",
+    "./skills/odoo-migration",
+    "./skills/odoo-test-writer"
   ]
 }
