@@ -1,0 +1,10 @@
+{
+  "name": "odoo-skills",
+  "skills": [
+    "./skills/grill-me",
+    "./skills/owl",
+    "./skills/odoo",
+    "./skills/odoo-guidelines",
+    "./skills/odoo-migration"
+  ]
+}
