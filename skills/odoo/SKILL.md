@@ -26,7 +26,7 @@ Before running Odoo update/test commands, inspect likely commands from repo docs
 - Sync manifest/docs with implemented behavior: use [MANIFEST-DOCS.md](MANIFEST-DOCS.md).
 - Build, review, debug, or migrate OWL frontend components: use `owl`.
 - Review Odoo code for correctness, security, performance, tests, migrations, manifests, and official coding guidelines: use `odoo-code-review`.
-- Create or improve Odoo tests using TransactionCase, HttpCase, Form helper, tags, mocks, access tests, workflow tests, or test commands: use `odoo-test-writer`.
+- Create or improve Odoo tests using TransactionCase, HttpCase, Form helper, tags, mocks, access tests, workflow tests, or test coverage patterns: use `odoo-test-writer`.
 - Migrate an OCA addon between Odoo major versions: use `odoo-migration`.
 - Need detailed known-version guidance: use `odoo-17.0`, `odoo-18.0`, or `odoo-19.0`.
 

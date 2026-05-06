@@ -40,7 +40,7 @@ Treat a repo as Odoo-related when it contains signals such as:
 - Use `odoo-code-review` for Odoo code reviews, pull request reviews, correctness/security/performance audits, official Odoo coding guideline checks, migration risk reviews, and test coverage reviews.
 - Use `odoo-code-tracer` when you need to trace execution from an entry point through controllers, buttons, cron jobs, model methods, overrides, computes, onchanges, constraints, database operations, side effects, and security checks.
 - Use `odoo-migration` for OCA module migration, Odoo major-version ports, `[MIG]` PRs, and version checklist work.
-- Use `odoo-test-writer` when creating or improving Odoo tests with TransactionCase, SingleTransactionCase, HttpCase, AccountTestInvoicingCommon, Form helper, tags, mocked external APIs, access tests, workflow tests, or Odoo test commands.
+- Use `odoo-test-writer` when creating or improving Odoo tests with TransactionCase, SingleTransactionCase, HttpCase, AccountTestInvoicingCommon, Form helper, tags, mocked external APIs, access tests, workflow tests, or test coverage improvements.
 - Use `odoo-17.0`, `odoo-18.0`, or `odoo-19.0` as version-specific references when the target version is known and detailed guidance is needed for actions, controllers, data, decorators, fields, manifests, migrations, mixins, models, OWL, performance, reports, security, testing, transactions, translations, or views.
 - Do not use OpenUpgrade workflows for `odoo-migration`; that skill is scoped to normal OCA module migration.
 

@@ -1,6 +1,6 @@
 # Odoo Testing Examples
 
-These examples are templates. Adapt model names, XML IDs, users, fields, and commands to the target addon.
+These examples are templates. Adapt model names, XML IDs, users, fields, and fixtures to the target addon.
 
 ## Shared Fixtures In `tests/common.py`
 
@@ -276,16 +276,4 @@ class TestReadOnlyOperations(SingleTransactionCase):
 
     def test_01_count_records(self):
         self.assertEqual(len(self.large_dataset), 1000)
-```
-
-## Test Command Cheat Sheet
-
-```bash
-odoo docker test --modules module_name
-odoo docker test --modules module_name --test-tags post_install
-odoo docker test --modules module_name --log-level=test:DEBUG
-odoo docker test --modules module1,module2,module3
-odoo docker test --test-tags /your_module:TestYourFeature.test_01_specific_case
-odoo docker test --modules your_module --screenshots
-odoo docker test --modules your_module --screencasts
 ```

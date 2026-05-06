@@ -1,6 +1,6 @@
 ---
 name: odoo-test-writer
-description: Create and improve Odoo custom module tests using the Odoo test framework. Use when the user asks to add tests, create TransactionCase/HttpCase tests, test Odoo business logic, mock external APIs, use Form helper, test access rules, test workflows, or run/debug Odoo module tests.
+description: Create and improve Odoo custom module tests using the Odoo test framework. Use when the user asks to add tests, create TransactionCase/HttpCase tests, test Odoo business logic, mock external APIs, use Form helper, test access rules, test workflows, or improve Odoo test coverage.
 ---
 
 # Odoo Test Writer
@@ -14,8 +14,6 @@ Before writing tests:
 - Identify the addon/module and target Odoo version.
 - Inspect `__manifest__.py`, `models/`, `views/`, `security/`, `controllers/`, `report/`, `static/src/`, existing `tests/`, and relevant docs.
 - If `$ODOO_SOURCE` is set, inspect local test helpers and framework behavior instead of guessing.
-- If `$ODOO_TOOL_README` or `$ODOO_BASE_COMMAND` is set, inspect it before proposing test commands.
-- Ask before running commands that touch a database or local Odoo service.
 
 ## Choose The Test Type
 
@@ -51,9 +49,8 @@ Every new `test_*.py` must be imported from `tests/__init__.py`, or the Odoo tes
 7. For external integrations, patch the boundary where it is used, then assert both state changes and mock calls.
 8. For performance-sensitive code, add `assertQueryCount` when supported by the target version/test base.
 9. Update `tests/__init__.py` and manifest dependencies only when evidence requires it.
-10. Propose the local test command, but ask before running Odoo commands.
 
-## Tags And Commands
+## Tags
 
 Default pattern for post-install module tests:
 
@@ -65,18 +62,9 @@ class TestYourFeature(YourModuleTestCommon):
     pass
 ```
 
-Common command forms, adapted to repo tooling:
-
-```bash
-odoo docker test --modules your_module
-odoo docker test --modules your_module --test-tags post_install
-odoo docker test --test-tags /your_module:TestYourFeature.test_01_specific_case
-odoo docker test --modules your_module --log-level=test:DEBUG
-```
-
 ## References
 
-- See [ODOO-TESTING-SOP.md](ODOO-TESTING-SOP.md) for the SOP, terminology, command syntax, and troubleshooting.
+- See [ODOO-TESTING-SOP.md](ODOO-TESTING-SOP.md) for the SOP, terminology, tags, and troubleshooting.
 - See [ODOO-TESTING-EXAMPLES.md](ODOO-TESTING-EXAMPLES.md) for ready-to-adapt test patterns.
 - Compose with `odoo-code-tracer` when you need to trace the behavior before writing tests.
 - Compose with `odoo-code-review` when reviewing test coverage or test quality.

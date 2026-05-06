@@ -86,24 +86,11 @@ class TestYourFeature(YourModuleTestCommon):
     pass
 ```
 
-Tag syntax:
+Tag selector syntax:
 
 ```text
 [-][tag][/module][:class][.method]
 ```
-
-Examples:
-
-```bash
-odoo docker test --modules your_module --test-tags post_install
-odoo docker test --modules your_module --test-tags standard
-odoo docker test --modules your_module --test-tags 'standard,-slow'
-odoo docker test --test-tags /your_module:TestYourFeature
-odoo docker test --test-tags /account:TestAccountMove.test_supplier_invoice
-odoo docker test --test-tags .test_specific_method_name
-```
-
-Use repo-specific commands when present. Inspect `$ODOO_TOOL_README` and `$ODOO_BASE_COMMAND`, then ask before running commands that touch a database or service.
 
 ## Common Imports
 
@@ -111,7 +98,6 @@ Use repo-specific commands when present. Inspect `$ODOO_TOOL_README` and `$ODOO_
 from datetime import date, datetime, timedelta
 from unittest.mock import MagicMock, call, patch
 
-from odoo import Command
 from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.tests import HttpCase, SingleTransactionCase, TransactionCase, tagged
 from odoo.tests.common import Form
@@ -230,4 +216,3 @@ Aim for roughly:
 - External dependencies are mocked at the boundary.
 - Access tests use realistic users/groups/companies when relevant.
 - Tests cover success and failure paths.
-- Proposed command matches repo tooling and awaits confirmation before DB/service execution.

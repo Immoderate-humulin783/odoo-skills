@@ -9,4 +9,4 @@
 - **[odoo-code-review](./odoo-code-review/SKILL.md)** - Odoo review workflow for correctness, security, performance, migrations, tests, manifests, and official coding guidelines.
 - **[odoo-code-tracer](./odoo-code-tracer/SKILL.md)** - Execution-flow tracing for controllers, buttons, cron jobs, model methods, overrides, computes, onchanges, constraints, side effects, and security checks.
 - **[odoo-migration](./odoo-migration/SKILL.md)** - End-to-end OCA module migration workflow for porting addons between Odoo major versions.
-- **[odoo-test-writer](./odoo-test-writer/SKILL.md)** - Odoo test creation with TransactionCase, SingleTransactionCase, HttpCase, AccountTestInvoicingCommon, Form helper, tags, mocked external APIs, access tests, workflow tests, and test commands.
+- **[odoo-test-writer](./odoo-test-writer/SKILL.md)** - Odoo test creation with TransactionCase, SingleTransactionCase, HttpCase, AccountTestInvoicingCommon, Form helper, tags, mocked external APIs, access tests, workflow tests, and coverage patterns.
