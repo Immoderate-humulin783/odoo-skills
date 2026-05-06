@@ -1,6 +1,7 @@
 # Skills
 
 - **[grill-me](./grill-me/SKILL.md)** - Odoo-specific grilling session for stress-testing addon plans, security, data models, UI flows, OWL changes, migrations, and verification strategy.
+- **[idea-gates](./idea-gates/SKILL.md)** - Odoo-aware idea validation for deciding whether a module, addon, app, or product should exist before implementation.
 - **[owl](./owl/SKILL.md)** - OWL frontend engineering for Odoo and standalone Owl apps, including components, templates, reactivity, hooks, plugins, debugging, and migration.
 - **[odoo](./odoo/SKILL.md)** - Odoo addon development, exploration, debugging, architecture review, and manifest/docs sync.
 - **[odoo-17.0](./odoo-17.0/SKILL.md)** - Odoo 17 reference guides for actions, controllers, data, decorators, fields, manifests, migrations, mixins, models, OWL, performance, reports, security, testing, transactions, translations, and views.

@@ -35,6 +35,7 @@ Treat a repo as Odoo-related when it contains signals such as:
 ## Skill Routing
 
 - Use `grill-me` when the user wants to stress-test an Odoo plan/design, get grilled on addon architecture, clarify model/security/view choices before implementation, or says "grill me" in an Odoo context.
+- Use `idea-gates` before building a new Odoo module, addon, marketplace app, or product idea when validating usefulness, existing alternatives, buyer demand, wedge, reach, Odoo fit, or whether the idea should exist at all.
 - Use `owl` for OWL/frontend component work, Odoo web client components, `@odoo/owl`, templates, hooks, reactivity, props, registries, plugins, assets, frontend debugging, and OWL migrations.
 - Use `odoo` for addon development, exploration, debugging, architecture, manifests, docs, security, views, models, controllers, assets, reports, and tests.
 - Use `odoo-code-review` for Odoo code reviews, pull request reviews, correctness/security/performance audits, official Odoo coding guideline checks, migration risk reviews, and test coverage reviews.

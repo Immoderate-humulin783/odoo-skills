@@ -5,9 +5,9 @@
 
 # Odoo Skills
 
-**Odoo-specific agent skills for safer addon work, sharper reviews, execution tracing, test writing, OWL frontend changes, version references, and OCA migrations.**
+**Odoo-specific agent skills for idea validation, safer addon work, sharper reviews, execution tracing, test writing, OWL frontend changes, version references, and OCA migrations.**
 
-[![Skills](https://img.shields.io/badge/skills-10-4f46e5?style=flat-square)](#skills)
+[![Skills](https://img.shields.io/badge/skills-11-4f46e5?style=flat-square)](#skills)
 [![Odoo](https://img.shields.io/badge/Odoo-addon%20engineering-714B67?style=flat-square)](https://www.odoo.com/)
 [![OCA](https://img.shields.io/badge/OCA-migration%208.0--19.0-0A66C2?style=flat-square)](https://odoo-community.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org)
@@ -120,6 +120,7 @@ The point is not more ceremony. The point is fewer security bugs, fewer broken m
 | Skill | Use It For |
 |---|---|
 | **[grill-me](./skills/grill-me/SKILL.md)** | Stress-test Odoo plans before implementation: addon boundaries, models, security, UI flows, data, OWL, migrations, and verification. |
+| **[idea-gates](./skills/idea-gates/SKILL.md)** | Validate whether an Odoo module, addon, app, or product idea should exist: existing alternatives, buyer demand, wedge, reach, Odoo fit, and value equation. |
 | **[owl](./skills/owl/SKILL.md)** | Build, review, debug, and migrate OWL frontend code: components, templates, reactivity, hooks, props, plugins, registries, and Odoo assets. |
 | **[odoo](./skills/odoo/SKILL.md)** | General Odoo addon development: exploration, debugging, architecture review, manifest/docs sync, models, views, controllers, reports, tests, and security. |
 | **[odoo-17.0](./skills/odoo-17.0/SKILL.md)** | Odoo 17 reference guides for actions, controllers, data, decorators, fields, manifests, migrations, mixins, models, OWL, performance, reports, security, testing, transactions, translations, and views. |
@@ -146,6 +147,7 @@ odoo-skills/
 │   └── link-skills.sh
 └── skills/
     ├── grill-me/
+    ├── idea-gates/
     ├── odoo/
     ├── odoo-17.0/
     ├── odoo-18.0/
@@ -212,6 +214,7 @@ The skills push agents toward a simple discipline:
 ## Designed For
 
 - Odoo addon development.
+- Odoo module and app idea validation before implementation.
 - OCA repositories.
 - OCA module migrations between major Odoo versions.
 - OWL/web client frontend work.
@@ -233,7 +236,7 @@ OpenUpgrade workflows are not covered. The migration skill is for normal OCA mod
 
 | Metric | Value |
 |---|---|
-| Skills | 10 |
+| Skills | 11 |
 | Installer | `npx github:mart337i/odoo-skills` |
 | OCA migration coverage | `8.0` through `19.0` |
 | Version reference coverage | Odoo 17.0, 18.0, 19.0 |

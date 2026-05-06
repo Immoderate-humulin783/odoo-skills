@@ -2,6 +2,7 @@
   "name": "odoo-skills",
   "skills": [
     "./skills/grill-me",
+    "./skills/idea-gates",
     "./skills/owl",
     "./skills/odoo",
     "./skills/odoo-17.0",
